@@ -18,11 +18,13 @@ def perform_ocr(image_path):
     preprocessed_image = minimal_preprocess(image_path)
     cv2.imwrite(folder + 'preprocessed_image.png', preprocessed_image)
     custom_config = r'--oem 3 --psm 1'
+    # OG CONFIG custom_config = r'--oem 3 --psm 1'
+    # BETTER TABLE CONFIG CONFIG custom_config = r'--oem 3 --psm 4'
     text = pytesseract.image_to_string(preprocessed_image, config=custom_config)
     
     return text
 
-folder = 'testE/'
+folder = 'testA/'
 
 image_path = 'image.jpg'
 extracted_text = perform_ocr(folder + image_path)
