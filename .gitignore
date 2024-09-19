@@ -1,0 +1,13 @@
+.venv/
+venv/
+
+.env
+env/
+
+*.pyc
+__pycache__/
+
+.ipynb_checkpoints/
+
+*.log
+Why Avoid 
