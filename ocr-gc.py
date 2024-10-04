@@ -18,6 +18,9 @@ docai_client = documentai.DocumentProcessorServiceClient(
 
 RESOURCE_NAME = docai_client.processor_path(PROJECT_ID, LOCATION, PROCESSOR_ID)
 
+with open('batch/editor.txt', 'r', encoding='utf-8') as editor_file:
+    editor_content = editor_file.read()
+
 def ocr(file_path):
     with open(file_path, "rb") as image:
         image_content = image.read()
@@ -30,7 +33,7 @@ def ocr(file_path):
 
     output_file_path = os.path.join(OUTPUT_FOLDER, os.path.basename(file_path) + '.txt')
     with open(output_file_path, 'w', encoding='utf-8') as f:
-        f.write(result.document.text)
+        f.write(editor_content + '\n' + result.document.text)
 
 def process_batch(input_folder, count = 0):
     if not os.path.exists(OUTPUT_FOLDER):
